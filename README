@@ -1,0 +1,5 @@
+mvn clean
+mvn compile
+mvn tomcat:run
+
+ä¯ÀÀÆ÷ÊäÈëÍøÖ·£ºhttp://localhost:8080/Exam4/index.jsp

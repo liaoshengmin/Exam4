@@ -1,0 +1,73 @@
+
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+
+
+	<filter>
+		<filter-name>PermissionFilter</filter-name>
+		<filter-class>com.filter.PermissionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PermissionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowServlet</servlet-name>
+		<servlet-class>com.servlet.ShowServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowServlet</servlet-name>
+		<url-pattern>/ShowServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AddServlet</servlet-name>
+		<servlet-class>com.servlet.AddServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddServlet</servlet-name>
+		<url-pattern>/AddServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteServlet</servlet-name>
+		<servlet-class>com.servlet.DeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteServlet</servlet-name>
+		<url-pattern>/DeleteServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UpdateServlet</servlet-name>
+		<servlet-class>com.servlet.UpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateServlet</servlet-name>
+		<url-pattern>/UpdateServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ShowOneServlet</servlet-name>
+		<servlet-class>com.servlet.ShowOneServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowOneServlet</servlet-name>
+		<url-pattern>/ShowOneServlet</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>
