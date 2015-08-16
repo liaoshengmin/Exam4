@@ -24,6 +24,7 @@ public class JDBCService {
 			ps.setString(1, fname);
 			rs = ps.executeQuery();
 			while(rs.next()){
+				rs.close();
 				return true;
 			}
 		} catch (SQLException e) {
@@ -51,7 +52,7 @@ public class JDBCService {
 				fm.setLanguage_name(rs.getString("name"));
 				list.add(fm);
 			}
-			
+			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -59,21 +60,21 @@ public class JDBCService {
 		return list;
 	}
 	
-	public void add(Film film){
-		ResultSet rs = null;
+	public void add(Film film,int id){
+
 		String sql="INSERT INTO film(title,description,language_id,rental_duration,rental_rate,replacement_cost) VALUES(?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, film.getTitle());
 			ps.setString(2, film.getDescription());
-			ps.setString(3, film.getLanguage_name());
+			ps.setInt(3, id);;
 			ps.setString(4, "1");
 			ps.setString(5, "1");
 			ps.setString(6, "1");
-			ps.executeQuery();
+			ps.execute();
 
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -130,16 +131,64 @@ public class JDBCService {
 				fm.setTitle(rs.getString("title"));
 				fm.setDescription(rs.getString("description"));
 				fm.setLanguage_name(rs.getString("name"));
+				rs.close();
 				return fm;
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 		
 	}
+	
+	public List langname(){
+		ResultSet rs = null;
+		String sql="select name from language";
+		List list = new  ArrayList();
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				list.add(rs.getString("name"));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+		
+	}
+	
+	public int langid(String name){
+		ResultSet rs = null;
+		String sql="select language_id from language where name=?";
+
+		try {
+			System.out.println(name);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,name);
+			rs = ps.executeQuery();
+			rs.next();
+			int a =rs.getInt("language_id");
+			rs.close();
+			return a;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+		
+		
+	}
+	
 	
 	
 	public List<Language> lang(){
@@ -156,7 +205,7 @@ public class JDBCService {
 				lan.setName(rs.getString("name"));;
 				list.add(lan);
 			}
-			
+			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -166,15 +215,16 @@ public class JDBCService {
 	}
 	
 	
-	public void update(Film film){
+	public void update(Film film,int id){
 		ResultSet rs = null;
 		String sql="update film set title=?,description=?,language_id=? where film_id=?";
 
 		try {
+			System.out.println(id);
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,film.getTitle() );
 			ps.setString(2, film.getDescription());
-			ps.setInt(3, 3);
+			ps.setInt(3, id);
 			ps.setInt(4, film.getFilm_id());
 			ps.executeUpdate();
 			

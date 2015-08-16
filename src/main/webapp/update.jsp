@@ -13,7 +13,9 @@
 	<%
 		Film fm = (Film) session.getAttribute("fm");
 		ArrayList<Language> lanlist = new ArrayList();
+		ArrayList listname = new ArrayList();
 		lanlist = (ArrayList) session.getAttribute("lanlist");
+		listname =(ArrayList) session.getAttribute("listname");
 	%>
 	<form action="<%=request.getContextPath()%>/UpdateServlet"
 		method="post">
@@ -31,8 +33,15 @@
 				<td><input type="text" value="<%=fm.getTitle()%>" name="title" /></td>
 				<td><input type="text" value="<%=fm.getDescription()%>"
 					name="description" /></td>
-				<td><input type="text" value="<%=fm.getLanguage_name()%>"
-					name="language_name" /></td>
+				<!-- <td><input type="text" value="<%=fm.getLanguage_name()%>"
+					name="language_name" /></td> -->
+					
+					<td> <select name="language_name">
+					<%for(int i=0;i<listname.size();i++){ %>
+					    <option><%=listname.get(i)%></option>
+					    <%} %>
+					</select>
+					</td>
 			</tr>
 			<th></th>
 			<th></th>

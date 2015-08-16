@@ -15,6 +15,7 @@ if(flag.equals("login_success")){
 登录失败
 <%} %>
 
-<a href="<%= request.getContextPath() %>/ShowServlet">show</a>
+<a href="<%= request.getContextPath() %>/ShowServlet">显示所有信息</a>
+<a href="<%=request.getContextPath()%>/GetLanguageServlet" >增加信息</a>
 </body>
 </html>

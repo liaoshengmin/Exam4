@@ -41,6 +41,18 @@
 		<servlet-name>AddServlet</servlet-name>
 		<url-pattern>/AddServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetLanguageServlet</servlet-name>
+		<servlet-class>com.servlet.GetLanguageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetLanguageServlet</servlet-name>
+		<url-pattern>/GetLanguageServlet</url-pattern>
+	</servlet-mapping>
+
+
+
 
 	<servlet>
 		<servlet-name>DeleteServlet</servlet-name>

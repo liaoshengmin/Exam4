@@ -25,9 +25,12 @@ public class UpdateServlet extends HttpServlet {
 		fm.setFilm_id(Integer.parseInt(req.getParameter("film_id"))); 
 		fm.setTitle(req.getParameter("title")); 
 		fm.setDescription(req.getParameter("description"));
+		fm.setLanguage_name(req.getParameter("language_name"));
 //		System.out.println(id);
 		JDBCService js = new JDBCService();
-		js.update(fm);
+		int id =js.langid(req.getParameter("language_name"));
+		
+		js.update(fm,id);
 		
 		RequestDispatcher rd = null;
 		rd = req.getRequestDispatcher("/ShowServlet");

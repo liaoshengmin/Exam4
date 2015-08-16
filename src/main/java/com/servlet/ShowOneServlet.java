@@ -33,6 +33,8 @@ public class ShowOneServlet extends HttpServlet {
 		List<Language> list =js.lang();
 		req.getSession().setAttribute("lanlist", list);
 		
+		List listname = js.langname();
+		req.getSession().setAttribute("listname", listname);
 		
 		RequestDispatcher rd = null;
 		rd = req.getRequestDispatcher("/update.jsp");

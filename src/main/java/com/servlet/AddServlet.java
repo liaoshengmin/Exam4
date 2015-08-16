@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,10 +28,12 @@ public class AddServlet extends HttpServlet {
 //		fm.setLanguage_name(language_name);
 //		System.out.println(id);
 		JDBCService js = new JDBCService();
-		js.update(fm);
+		int id=js.langid(req.getParameter("language_name"));
+		js.add(fm, id);
+		
 		
 		RequestDispatcher rd = null;
-		rd = req.getRequestDispatcher("/ShowServlet");
+		rd = req.getRequestDispatcher("/show.jsp");
 		rd.forward(req, resp);
 	}
 	

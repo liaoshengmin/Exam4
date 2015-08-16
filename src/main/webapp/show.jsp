@@ -35,7 +35,7 @@
 	
 	<% } %>
 </table>
-<a href="add.jsp" >增加信息</a>
+<a href="<%=request.getContextPath()%>/GetLanguageServlet" >增加信息</a>
 
 
 </body>
